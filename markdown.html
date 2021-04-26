@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="markdown.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="./markdown.js"></script>
+
+  <script>
+
+    function updatePreview() {
+      let previewElement = document.getElementById("preview")
+      let editorValue = document.getElementById("editor").value;
+      let markUpHTML = marked(editorValue, {breaks: true});
+      previewElement.innerHTML = markUpHTML;
+
+    }
+
+    function setDefault() {
+      let defaultText = `
+# Mark Down Preview
+## Free Code Camp
+[Learn more about freecodecamp.org]("https://www.freecodecamp.org/learn").
+<dl>
+  <dt>Definition List</dt>
+  <dd>is something people use sometimes.</dd>
+  
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
+\`This is an example of inline block\`
+
+\`\`\`
+function example(){
+  return multiLineBlock;
+}
+\`\`\`
+ - code
+ - All
+ - day
+
+>Learn to be a useful programmer
+
+![React](https://ionicframework.com/docs/assets/icons/logo-react-icon.png)
+
+**Bolded Text**`;
+
+
+      let editorField = document.getElementById("editor");
+      let previewElement = document.getElementById("preview");
+      editorField.value = defaultText;
+      previewElement.innerHTML = marked(defaultText);
+    }
+  </script>
+
+  <title>MarkDown Preview</title>
+</head>
+
+<body onload="setDefault()" class="bg-success">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col text-center bg-success my-3">
+        <h1>MarkDown Previewer</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 bg-primary text-center d-flex flex-column">
+        <h2 class="text-white my-3">Editor </h2>
+        <div class="form-group flex-grow-1 d-flex flex-column">
+        <textarea class="form-control flex-grow-1" id="editor" onkeyup="updatePreview()"></textarea>
+        </div>  
+      </div>
+      <div class="col-6 bg-white">
+        <div clas="bg-primary">
+        <h2 class="text-white my-3">Previewer</h2>
+        <div id="preview"></div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+</body>
+
+</html>
